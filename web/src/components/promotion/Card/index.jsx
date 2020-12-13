@@ -20,7 +20,7 @@ export default function PromotionCard({ promotion }) {
             {promotion.comments.length}
             {promotion.comments.length > 1 ? " comentários" : " comentário"}
           </p>
-          <a href={promotion.url} target="_blank" rel="noreferrer">
+          <a href={promotion.url} target="_blank" rel="noopener noreferrer">
             IR PARA O SITE
           </a>
         </footer>

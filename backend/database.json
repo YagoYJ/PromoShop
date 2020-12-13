@@ -1,0 +1,45 @@
+{
+  "promotions": [
+    {
+      "id": 1,
+      "title": "Par de Alto Falante Magnum 6 polegadas Rex Fusion 800W 4 Ohms",
+      "price": 99.99,
+      "imageUrl": "https://images.tcdn.com.br/img/img_prod/710062/par_de_alto_falante_magnum_6_rex_fusion_200w_4_ohms_1623_1_20200828134205.png",
+      "url": "https://www.artsomonline.com.br/alto-falantes/alto-falantes/6/par-de-alto-falante-magnum-6-rex-fusion-200w-4-ohms"
+    },
+    {
+      "id": 2,
+      "title": "Smart TV 65 polegadas Crystal UHD TU7020 4K 2020 Samsung",
+      "price": 3704.91,
+      "imageUrl": "https://lojaibyte.vteximg.com.br/arquivos/ids/207216-264-264/smart-tv-65-crystal-uhd-tu7020-4k-2020-samsung-2-hdmi-1-usb-wi-fi-bluetooth-01.jpg?v=637388152490000000",
+      "url": "https://www.ibyte.com.br/smart-tv-65-crystal-uhd-tu7020-4k-2020-samsung-2-hdmi-1-usb-wi-fi-bluetooth/p"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "comment": "Top d+",
+      "promotionId": 1
+    },
+    {
+      "id": 2,
+      "comment": "Muito bom! Nota 2",
+      "promotionId": 1
+    },
+    {
+      "id": 3,
+      "comment": "Amei <3",
+      "promotionId": 2
+    },
+    {
+      "id": 4,
+      "comment": "Top de bola",
+      "promotionId": 2
+    },
+    {
+      "id": 5,
+      "comment": "Muito top!",
+      "promotionId": 2
+    }
+  ]
+}
