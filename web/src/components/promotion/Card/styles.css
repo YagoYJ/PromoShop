@@ -30,6 +30,10 @@
   flex-direction: column;
   justify-content: space-around;
 }
+.promotionCard .descriptions .descriptionsHeader {
+  align-items: center;
+  margin: 0;
+}
 
 .promotionCard .descriptions h1 {
   font-size: 16pt;
@@ -61,19 +65,4 @@
   margin-left: auto;
   margin-right: 20px;
   color: #3498db;
-}
-
-.promotionCard footer a {
-  border: 1px solid #3498db;
-  border-radius: 4px;
-  color: #3498db;
-  text-decoration: none;
-  padding: 8px 10px;
-}
-
-.promotionCard footer a:hover {
-  cursor: pointer;
-  transition: 0.3s;
-  background-color: #3498db;
-  color: #ffffff;
 }

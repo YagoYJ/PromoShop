@@ -1,13 +1,12 @@
-import "./styles.css";
+import Form from "../../components/promotion/Form";
 import { useParams } from "react-router-dom";
+import "./styles.css";
 
 export default function PageForm() {
   const { id } = useParams();
-
   return (
     <div>
-      <h1>{id && <div>id: {id}</div>}</h1>
-      <h1>Create</h1>
+      <Form id={id ? Number.parseInt(id, 10) : null} />
     </div>
   );
 }

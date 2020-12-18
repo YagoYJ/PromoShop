@@ -18,17 +18,18 @@ export default function PromotionSearch() {
       params.title_like = search;
     }
 
-    api.get("/promotions?_embed=comments", { params }).then((response) => {
-      setPromotions(response.data);
-    });
-    console.log("pesquisou");
+    api
+      .get("/promotions?_embed=comments&_order=desc&_sort=id", { params })
+      .then((response) => {
+        setPromotions(response.data);
+      });
   }, [search]);
 
   return (
     <>
       <header>
         <h1>PromoShop</h1>
-        <Link to={"/create"} className="creteProductButton">
+        <Link to={"/create"} className="button creteProductButton">
           Nova promoção
         </Link>
       </header>
@@ -46,7 +47,7 @@ export default function PromotionSearch() {
           <PromotionCard key={promotion.id} promotion={promotion} />
         ))
       ) : (
-        <h2>Não há promoções disponíveis!</h2>
+        <h2 className="noPromotionFound">Não há promoções disponíveis!</h2>
       )}
     </>
   );

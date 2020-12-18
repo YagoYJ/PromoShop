@@ -1,0 +1,36 @@
+h1 {
+  color: #3498db;
+  margin-bottom: 5px;
+}
+
+h2 {
+  color: #555555;
+  margin-bottom: 20px;
+}
+
+.gifContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form .inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+form .inputGroup label {
+  font-size: 14pt;
+  color: #555555;
+  margin-bottom: 5px;
+}
+
+form .inputGroup input {
+  height: 36px;
+  border: 1px solid #aaaaaa;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
