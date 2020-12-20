@@ -1,6 +1,10 @@
+import { useState } from "react";
 import PromotionCard from "../Card";
+import PromotionModal from "../Modal";
 
 export default function PromotionList({ promotions, loading, error }) {
+  const [promotionId, setPromotionId] = useState(null);
+
   if (loading || promotions === null) {
     return <h2 className="statusMessage">Carregando...</h2>;
   }
@@ -18,8 +22,17 @@ export default function PromotionList({ promotions, loading, error }) {
   return (
     <>
       {promotions.map((promotion) => (
-        <PromotionCard key={promotion.id} promotion={promotion} />
+        <PromotionCard
+          key={promotion.id}
+          promotion={promotion}
+          onClickComments={() => setPromotionId(promotion.id)}
+        />
       ))}
+
+      <PromotionModal
+        isOpen={Boolean(promotionId)}
+        onClickClose={() => setPromotionId(null)}
+      ></PromotionModal>
     </>
   );
 }
