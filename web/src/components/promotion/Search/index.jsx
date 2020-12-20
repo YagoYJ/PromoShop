@@ -1,28 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-import PromotionCard from "../Card";
-
-import api from "../../../services/api";
-
 import "./styles.css";
+import useApi from "../../utils/useApi";
+import PromotionList from "../List";
 
 export default function PromotionSearch() {
-  const [promotions, setPromotions] = useState([]);
+  const mountRef = useRef(null);
   const [search, setSearch] = useState("");
+  const [load, loadInfo] = useApi({
+    method: "get",
+    url: "/promotions",
+    params: {
+      _embed: "comments",
+      _order: "desc",
+      _sort: "id",
+      title_like: search || undefined,
+    },
+    debounceDelay: 300,
+  });
 
   useEffect(() => {
-    const params = {};
+    load({
+      debounced: mountRef.current,
+    });
 
-    if (search) {
-      params.title_like = search;
+    if (!mountRef.current) {
+      load({
+        debounced: true,
+      });
     }
 
-    api
-      .get("/promotions?_embed=comments&_order=desc&_sort=id", { params })
-      .then((response) => {
-        setPromotions(response.data);
-      });
+    if (!mountRef.current) {
+      mountRef.current = true;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   return (
@@ -42,13 +54,11 @@ export default function PromotionSearch() {
           setSearch(event.target.value);
         }}
       />
-      {promotions.length > 0 ? (
-        promotions.map((promotion) => (
-          <PromotionCard key={promotion.id} promotion={promotion} />
-        ))
-      ) : (
-        <h2 className="noPromotionFound">Não há promoções disponíveis!</h2>
-      )}
+      <PromotionList
+        promotions={loadInfo.data}
+        loading={loadInfo.loading}
+        error={loadInfo.error}
+      />
     </>
   );
 }

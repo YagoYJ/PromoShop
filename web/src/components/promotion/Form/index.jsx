@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import useApi from "../../utils/useApi";
 import "./styles.css";
 
 const initialValue = {
@@ -14,12 +14,29 @@ export default function Form({ id }) {
   const [values, setValues] = useState(id ? null : initialValue);
   const history = useHistory();
 
+  const [load, loadInfo] = useApi({
+    method: "get",
+    url: `/promotions/${id}`,
+    onCompleted: (response) => {
+      setValues(response.data);
+    },
+  });
+
+  const [save, saveInfo] = useApi({
+    method: id ? "put" : "post",
+    url: id ? `/promotions/${id}` : "/promotions",
+    onCompleted: (response) => {
+      if (!response.error) {
+        history.push("/");
+      }
+    },
+  });
+
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:5000/promotions/${id}`).then((response) => {
-        setValues(response.data);
-      });
+      load();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   function onChange(event) {
@@ -30,15 +47,7 @@ export default function Form({ id }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    const method = id ? "put" : "post";
-    const url = id
-      ? `http://localhost:5000/promotions/${id}`
-      : "http://localhost:5000/promotions";
-
-    axios[method](url, values).then((response) => {
-      history.push("/");
-    });
+    save({ data: values });
   }
 
   if (!values) {
@@ -59,6 +68,9 @@ export default function Form({ id }) {
 
       <h2>{id ? "Editar" : "Nova"} promoção</h2>
       <form onSubmit={handleSubmit}>
+        {saveInfo.loading && (
+          <span className="statusMessage">Salvando dados...</span>
+        )}
         <div className="inputGroup">
           <label htmlFor="title">Título</label>
           <input
