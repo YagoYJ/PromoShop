@@ -14,6 +14,7 @@ export default function Form({ id }) {
   const [values, setValues] = useState(id ? null : initialValue);
   const history = useHistory();
 
+  // eslint-disable-next-line no-unused-vars
   const [load, loadInfo] = useApi({
     method: "get",
     url: `/promotions/${id}`,

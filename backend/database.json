@@ -40,27 +40,80 @@
     {
       "id": 1,
       "comment": "Top d+",
-      "promotionId": 1
+      "promotionId": 1,
+      "userId": 1
     },
     {
       "id": 2,
       "comment": "Muito bom! Nota 2",
-      "promotionId": 1
+      "promotionId": 1,
+      "userId": 2
     },
     {
       "id": 3,
       "comment": "Amei <3",
-      "promotionId": 2
+      "promotionId": 2,
+      "userId": 1
     },
     {
       "id": 4,
       "comment": "Top de bola",
-      "promotionId": 2
+      "promotionId": 2,
+      "userId": 2
     },
     {
       "id": 5,
       "comment": "Muito top!",
-      "promotionId": 2
+      "promotionId": 2,
+      "userId": 1
+    },
+    {
+      "userId": 1,
+      "promotionId": 5,
+      "comment": "Eu tenho umaaaa!!!",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "promotionId": 5,
+      "comment": "oi deliciaaa",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "promotionId": 4,
+      "comment": "oiii gostosaaa",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "promotionId": 4,
+      "comment": "Quero!!!",
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "promotionId": 4,
+      "comment": "oiiiii\n",
+      "id": 10
+    },
+    {
+      "userId": 1,
+      "promotionId": 4,
+      "comment": "Dattebayo",
+      "id": 11
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Yago Juan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/48865087?s=460&v=4"
+    },
+    {
+      "id": 2,
+      "name": "Diego Fernandes",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2254731?s=460&u=4fcc8ca9672eeb41ea800271831b7c687bc17054&v=4"
     }
   ]
 }

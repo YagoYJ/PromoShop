@@ -29,10 +29,13 @@ export default function PromotionList({ promotions, loading, error }) {
         />
       ))}
 
-      <PromotionModal
-        isOpen={Boolean(promotionId)}
-        onClickClose={() => setPromotionId(null)}
-      ></PromotionModal>
+      {promotionId && (
+        <PromotionModal
+          isOpen={Boolean(promotionId)}
+          onClickClose={() => setPromotionId(null)}
+          promotionId={promotionId}
+        ></PromotionModal>
+      )}
     </>
   );
 }
