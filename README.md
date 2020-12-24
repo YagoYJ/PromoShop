@@ -3,7 +3,7 @@
 
 ---
 
-## Instalation
+## Installation
 1. [Clone](https://github.com/YagoYJ/PromoShop.git) this repo.
 1. Make sure you have Yarn instaled in your computer.
 1. Run `cd web`, `yarn` to install dependecies and `yarn start` to start Frontend
