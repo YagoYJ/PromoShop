@@ -46,6 +46,18 @@ export default function PromotionModal({
     } catch (error) {}
   }
 
+  async function sendAnswerComment(answerComment, parentId) {
+    await sendComment({
+      data: {
+        userId: 1,
+        promotionId,
+        comment: answerComment,
+        parentId,
+      },
+    });
+    load();
+  }
+
   useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,7 +81,10 @@ export default function PromotionModal({
           </button>
         </header>
         <main>
-          <CommentsTree comments={loadInfo.data}>
+          <CommentsTree
+            comments={loadInfo.data}
+            sendAnswerComment={sendAnswerComment}
+          >
             <form
               className="commentsTreeCommentForm"
               onSubmit={handleSubmitComment}

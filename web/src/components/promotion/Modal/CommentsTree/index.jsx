@@ -1,6 +1,14 @@
+import { useState } from "react";
 import "./styles.css";
 
-export default function CommentsTree({ comments, children }) {
+export default function CommentsTree({
+  comments,
+  sendAnswerComment,
+  children,
+}) {
+  const [activeAnswerBox, setActiveAnswerBox] = useState(null);
+  const [answerComment, setAnswerComment] = useState("");
+
   if (!comments) {
     return (
       <>
@@ -32,9 +40,42 @@ export default function CommentsTree({ comments, children }) {
             <div className="right">
               <span className="commentsTreeUserName">{item.user.name}</span>
               <p className="commentsTreeComment"> {item.comment} </p>
-              <button type="button" className="button answerButton">
+              <button
+                type="button"
+                className="button answerButton"
+                onClick={() => {
+                  setAnswerComment("");
+                  setActiveAnswerBox(
+                    activeAnswerBox === item.id ? null : item.id
+                  );
+                }}
+              >
                 Responder
               </button>
+              {activeAnswerBox === item.id && (
+                <div className="commentsTreeAnswerBox">
+                  <textarea
+                    className="commentsTreeAnswerInput"
+                    placeholder="Comentar"
+                    rows="5"
+                    value={answerComment}
+                    onChange={(event) => {
+                      setAnswerComment(event.target.value);
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className="button sendAnswerButton"
+                    onClick={() => {
+                      sendAnswerComment(answerComment, item.id);
+                      setAnswerComment("");
+                      setActiveAnswerBox(null);
+                    }}
+                  >
+                    Responder
+                  </button>
+                </div>
+              )}
             </div>
           </li>
         ))}
@@ -42,3 +83,7 @@ export default function CommentsTree({ comments, children }) {
     </>
   );
 }
+
+CommentsTree.defaultProps = {
+  sendAnswerComment: () => {},
+};

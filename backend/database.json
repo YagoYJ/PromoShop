@@ -34,6 +34,13 @@
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/41GZCWFJB1L._AC_SX425_.jpg",
       "url": "https://www.amazon.com.br/Echo-Dot-3%C2%AA-Gera%C3%A7%C3%A3o-Cor-Preta/dp/B07PDHSJ1H/ref=asc_df_B07PDHSJ1H/?tag=googleshopp00-20&linkCode=df0&hvadid=387692590979&hvpos=&hvnetw=g&hvrand=12083259177232701509&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001538&hvtargid=pla-823375121002&psc=1",
       "id": 5
+    },
+    {
+      "title": "MacBook Air de 13 polegadas",
+      "price": "11000",
+      "imageUrl": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=452&hei=420&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1603332211000",
+      "url": "https://www.apple.com/br/shop/buy-mac/macbook-air",
+      "id": 6
     }
   ],
   "comments": [
@@ -75,33 +82,16 @@
     },
     {
       "userId": 1,
-      "promotionId": 5,
-      "comment": "oi deliciaaa",
+      "promotionId": 6,
+      "comment": "O meu primeiro comentário!! :D",
       "id": 7
     },
     {
       "userId": 1,
-      "promotionId": 4,
-      "comment": "oiii gostosaaa",
+      "promotionId": 2,
+      "comment": "eu tbm!!",
+      "parentId": 3,
       "id": 8
-    },
-    {
-      "userId": 1,
-      "promotionId": 4,
-      "comment": "Quero!!!",
-      "id": 9
-    },
-    {
-      "userId": 1,
-      "promotionId": 4,
-      "comment": "oiiiii\n",
-      "id": 10
-    },
-    {
-      "userId": 1,
-      "promotionId": 4,
-      "comment": "Dattebayo",
-      "id": 11
     }
   ],
   "users": [
