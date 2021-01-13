@@ -1,11 +1,46 @@
 import { useState } from "react";
 import "./styles.css";
 
+function getTree(list) {
+  if (!list) {
+    return [];
+  }
+  const roots = [];
+  const childrenByParentId = {};
+
+  list.forEach((item) => {
+    if (!item.parentId) {
+      roots.push(item);
+      return;
+    }
+
+    if (!childrenByParentId[item.parentId]) {
+      childrenByParentId[item.parentId] = [];
+    }
+
+    childrenByParentId[item.parentId].push(item);
+  });
+
+  function buildNodes(nodes) {
+    if (!nodes) {
+      return null;
+    }
+
+    return nodes.map((node) => ({
+      ...node,
+      children: buildNodes(childrenByParentId[node.id]),
+    }));
+  }
+
+  return buildNodes(roots);
+}
+
 export default function CommentsTree({
   comments,
   sendAnswerComment,
   children,
 }) {
+  console.log(getTree(comments));
   const [activeAnswerBox, setActiveAnswerBox] = useState(null);
   const [answerComment, setAnswerComment] = useState("");
 
