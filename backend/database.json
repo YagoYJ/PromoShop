@@ -92,6 +92,13 @@
       "comment": "eu tbm!!",
       "parentId": 3,
       "id": 8
+    },
+    {
+      "userId": 1,
+      "promotionId": 2,
+      "comment": "Outra resposta",
+      "parentId": 8,
+      "id": 9
     }
   ],
   "users": [

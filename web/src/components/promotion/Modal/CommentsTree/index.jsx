@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./styles.css";
 
 function getTree(list) {
@@ -40,7 +40,7 @@ export default function CommentsTree({
   sendAnswerComment,
   children,
 }) {
-  console.log(getTree(comments));
+  const tree = useMemo(() => getTree(comments), [comments]);
   const [activeAnswerBox, setActiveAnswerBox] = useState(null);
   const [answerComment, setAnswerComment] = useState("");
 
@@ -59,12 +59,11 @@ export default function CommentsTree({
     );
   }
 
-  return (
-    <>
-      {children}
-      <ul className="commentsTreeList">
-        {comments.map((item) => (
-          <li key={item.id} className="commentsTreeItem">
+  function renderItem(item) {
+    return (
+      <>
+        <li key={item.id} className="commentsTreeItem">
+          <div className="commentGroup">
             <div className="left">
               <img
                 src={item.user.avatar_url}
@@ -112,9 +111,20 @@ export default function CommentsTree({
                 </div>
               )}
             </div>
-          </li>
-        ))}
-      </ul>
+          </div>
+          {item.children ? renderList(item.children) : <hr />}
+        </li>
+      </>
+    );
+  }
+
+  function renderList(list) {
+    return <ul className="commentsTreeList">{list.map(renderItem)}</ul>;
+  }
+
+  return (
+    <>
+      {children} {renderList(tree)}
     </>
   );
 }

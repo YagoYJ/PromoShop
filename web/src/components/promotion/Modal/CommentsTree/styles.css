@@ -1,3 +1,12 @@
+hr {
+  width: 80%;
+  margin-top: 30px;
+}
+
+ul li ul {
+  margin: 20px 0 0 50px;
+}
+
 .commentsTreeCommentForm {
   width: 100%;
   display: flex;
@@ -27,27 +36,36 @@
 
 .commentsTreeList .commentsTreeItem {
   width: 100%;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.commentsTreeList .commentsTreeItem .commentGroup {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 10px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #cecece;
+  /* margin-bottom: 10px;
+  padding-bottom: 15px; */
   overflow: hidden;
 }
 
-.commentsTreeList .commentsTreeItem .left {
+.commentsTreeList .commentsTreeItem .commentGroup .left {
   margin-right: 20px;
   max-width: 20%;
 }
 
-.commentsTreeList .commentsTreeItem .left .commentsTreeUserAvatar {
+.commentsTreeList
+  .commentsTreeItem
+  .commentGroup
+  .left
+  .commentsTreeUserAvatar {
   width: 60px;
   height: 60px;
   border-radius: 50%;
 }
 
-.commentsTreeList .commentsTreeItem .right {
+.commentsTreeList .commentsTreeItem .commentGroup .right {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -55,29 +73,33 @@
   justify-content: center;
 }
 
-.commentsTreeList .commentsTreeItem .right .commentsTreeUserName {
+.commentsTreeList .commentsTreeItem .commentGroup .right .commentsTreeUserName {
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.commentsTreeList .commentsTreeItem .right .commentsTreeComment {
+.commentsTreeList .commentsTreeItem .commentGroup .right .commentsTreeComment {
   margin-bottom: 5px;
   max-width: 100%;
 }
 
-.commentsTreeList .commentsTreeItem .right .answerButton {
+.commentsTreeList .commentsTreeItem .commentGroup .right .answerButton {
   background: unset;
   border: none;
   padding: 0;
   margin: 0;
 }
 
-.commentsTreeList .commentsTreeItem .right .answerButton:hover {
+.commentsTreeList .commentsTreeItem .commentGroup .right .answerButton:hover {
   color: rgba(52, 152, 219, 0.8);
 }
 
-.commentsTreeList .commentsTreeItem .right .commentsTreeAnswerBox {
+.commentsTreeList
+  .commentsTreeItem
+  .commentGroup
+  .right
+  .commentsTreeAnswerBox {
   width: 100%;
   display: flex;
   flex-direction: column;
