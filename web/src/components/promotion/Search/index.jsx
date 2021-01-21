@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-import "./styles.css";
 import useApi from "../../utils/useApi";
 import PromotionList from "../List";
+import InfiniteScroll from "../../InfiniteScroll";
+
+import "./styles.css";
 
 export default function PromotionSearch() {
   const mountRef = useRef(null);
@@ -15,6 +17,8 @@ export default function PromotionSearch() {
       _embed: "comments",
       _order: "desc",
       _sort: "id",
+      _limit: 3,
+      _page: 1,
       title_like: search || undefined,
     },
     debounceDelay: 300,
@@ -58,6 +62,9 @@ export default function PromotionSearch() {
         promotions={loadInfo.data}
         loading={loadInfo.loading}
         error={loadInfo.error}
+      />
+      <InfiniteScroll
+        fetchMore={() => console.log("Iniciando o InfiniteScrol")}
       />
     </>
   );
