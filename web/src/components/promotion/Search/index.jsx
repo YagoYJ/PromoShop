@@ -7,31 +7,41 @@ import InfiniteScroll from "../../InfiniteScroll";
 
 import "./styles.css";
 
+const baseParams = {
+  _embed: "comments",
+  _order: "desc",
+  _sort: "id",
+  _limit: 5,
+};
+
 export default function PromotionSearch() {
+  const [page, setPage] = useState(1);
   const mountRef = useRef(null);
   const [search, setSearch] = useState("");
   const [load, loadInfo] = useApi({
     method: "get",
     url: "/promotions",
-    params: {
-      _embed: "comments",
-      _order: "desc",
-      _sort: "id",
-      _limit: 3,
-      _page: 1,
-      title_like: search || undefined,
-    },
     debounceDelay: 300,
   });
 
   useEffect(() => {
     load({
       debounced: mountRef.current,
+      params: {
+        ...baseParams,
+        _page: 1,
+        title_like: search || undefined,
+      },
     });
 
     if (!mountRef.current) {
       load({
         debounced: true,
+        params: {
+          ...baseParams,
+          _page: 1,
+          title_like: search || undefined,
+        },
       });
     }
 
@@ -40,6 +50,23 @@ export default function PromotionSearch() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
+
+  function fetchMore() {
+    const newPage = page + 1;
+    load({
+      isFetchMore: true,
+      params: {
+        ...baseParams,
+        _page: newPage,
+        title_like: search || undefined,
+      },
+      updateRequestInfo: (newRequestInfo, prevRequestInfo) => ({
+        ...newRequestInfo,
+        data: [...prevRequestInfo.data, ...newRequestInfo.data],
+      }),
+    });
+    setPage(newPage);
+  }
 
   return (
     <>
@@ -63,9 +90,11 @@ export default function PromotionSearch() {
         loading={loadInfo.loading}
         error={loadInfo.error}
       />
-      <InfiniteScroll
-        fetchMore={() => console.log("Iniciando o InfiniteScrol")}
-      />
+      {loadInfo.data &&
+        !loadInfo.loading &&
+        loadInfo.data?.length < loadInfo.total && (
+          <InfiniteScroll fetchMore={fetchMore} />
+        )}
     </>
   );
 }

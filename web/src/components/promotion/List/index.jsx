@@ -5,7 +5,7 @@ import PromotionModal from "../Modal";
 export default function PromotionList({ promotions, loading, error }) {
   const [promotionId, setPromotionId] = useState(null);
 
-  if (loading || promotions === null) {
+  if (promotions === null) {
     return <h2 className="statusMessage">Carregando...</h2>;
   }
 
@@ -28,7 +28,7 @@ export default function PromotionList({ promotions, loading, error }) {
           onClickComments={() => setPromotionId(promotion.id)}
         />
       ))}
-
+      {loading && <h2 className="statusMessage">Carregando mais promoções</h2>}
       {promotionId && (
         <PromotionModal
           isOpen={Boolean(promotionId)}

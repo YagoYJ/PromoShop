@@ -99,6 +99,13 @@
       "comment": "Outra resposta",
       "parentId": 8,
       "id": 9
+    },
+    {
+      "userId": 1,
+      "promotionId": 6,
+      "comment": "Meu segundo comentário",
+      "parentId": 7,
+      "id": 10
     }
   ],
   "users": [
